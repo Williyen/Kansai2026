@@ -1,2375 +1,1005 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>威拓精密股份有限公司 - 企業簡報</title>
-        <!-- 預載入字體 -->
-    <link rel="preload" href="./GenJyuuGothicL-P-Normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./GenJyuuGothicL-P-Normal.ttf" as="font" type="font/ttf" crossorigin>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-red: #dc1c57;
-            --secondary-red: #7c2d12;
-            --light-red: #fef2f2;
-            --accent-red: #f87171;
-            --dark-red: #991b1b;
-            --orange: #006b00;
-            --light-orange: #6eaa5e;
-            --text-gray: #374151;
-            --light-gray: #f9fafb;
-            --border-gray: #e5e7eb;
-            
-            --h1-size: 3.5em;
-            --h2-size: 2.5em;
-            --h3-size: 1.8em;
-            --h4-size: 1.3em;
-            --body-size: 1.1em;
-            --small-size: 0.95em;
-            
-            --spacing-xs: 10px;
-            --spacing-sm: 15px;
-            --spacing-md: 25px;
-            --spacing-lg: 40px;
-            --spacing-xl: 60px;
-            
-            --border-radius-sm: 8px;
-            --border-radius-md: 15px;
-            --border-radius-lg: 20px;
-            
-            --shadow-light: 0 4px 12px rgba(220, 28, 87, 0.1);
-            --shadow-medium: 0 8px 20px rgba(220, 28, 87, 0.15);
-            --shadow-heavy: 0 12px 30px rgba(220, 28, 87, 0.2);
-            
-            --transition-fast: 0.2s ease;
-            --transition-medium: 0.3s ease;
-            --transition-slow: 0.5s ease;
-        }
-
-         @font-face {
-            font-family: 'GenJyuuGothic';
-            src: url('./GenJyuuGothicL-P-Normal.woff2') format('woff2'),
-                 url('./GenJyuuGothicL-P-Normal.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: optional; /* 更積極的載入策略 */
-        }
-
-        body {
-            font-family: 'GenJyuuGothic', 'Microsoft JhengHei', '微軟正黑體', 'Noto Sans CJK TC', sans-serif;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            color: var(--text-gray);
-            overflow-x: hidden;
-            font-size: var(--body-size);
-            line-height: 1.6;
-        }
-
-
-        .container {
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-xs);
-        }
-
-        .slide {
-            min-height: 100vh;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: var(--spacing-md) 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all var(--transition-slow);
-        }
-
-        .slide.active {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide:nth-child(even) {
-            background: linear-gradient(135deg, #fafafa 0%, #f0f2f5 100%);
-        }
-
-        .slide-content {
-            width: 100%;
-        }
-
-        h1 {
-            font-size: var(--h1-size);
-            margin-bottom: var(--spacing-lg);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            background: linear-gradient(45deg, var(--primary-red), var(--secondary-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-align: center;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: var(--h2-size);
-            margin-bottom: var(--spacing-lg);
-            color: var(--primary-red);
-            border-bottom: 4px solid var(--primary-red);
-            padding-bottom: var(--spacing-sm);
-            text-align: center;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        h3 {
-            font-size: var(--h3-size);
-            margin-bottom: var(--spacing-md);
-            color: var(--secondary-red);
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        h4 {
-            font-size: var(--h4-size);
-            margin-bottom: var(--spacing-sm);
-            color: var(--primary-red);
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-lg);
-            align-items: center;
-        }
-
-        .split-layout {
-            display: grid;
-            grid-template-columns: 2fr 3fr;
-            gap: var(--spacing-md);
-            align-items: center;
-        }
-
-        .chart-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-md);
-            align-items: center;
-        }
-
-        .content-card {
-            background: white;
-            border-radius: var(--border-radius-lg);
-            padding: var(--spacing-md);
-            border: 2px solid var(--border-gray);
-            box-shadow: var(--shadow-light);
-            transition: all var(--transition-medium);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
-        }
-
-        .content-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-heavy);
-            border-color: var(--primary-red);
-        }
-
-        .hero-card {
-            text-align: center;
-            padding: var(--spacing-lg);
-            background: var(--light-red);
-            border: 2px solid var(--accent-red);
-        }
-
-        .brand-accent {
-            background: linear-gradient(135deg, var(--light-red), white);
-            border-left: 5px solid var(--primary-red);
-        }
-
-        .text-content {
-            font-size: var(--body-size);
-            line-height: 1.7;
-            margin-bottom: var(--spacing-md);
-            color: var(--text-gray);
-        }
-
-        .text-content p {
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .highlight {
-            color: var(--primary-red);
-            font-weight: bold;
-        }
-
-        .image-carousel {
-            width: 600px;
-            height: 450px;
-            margin: var(--spacing-lg) auto;
-            position: relative;
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .carousel-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .carousel-slides {
-            display: flex;
-            width: 500%;
-            height: 100%;
-            transition: transform var(--transition-slow);
-        }
-
-        .carousel-slide {
-            width: 20%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(220, 28, 87, 0.8);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: all var(--transition-medium);
-            z-index: 10;
-        }
-
-        .carousel-btn:hover {
-            background: var(--primary-red);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-btn.prev { left: var(--spacing-sm); }
-        .carousel-btn.next { right: var(--spacing-sm); }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: var(--spacing-sm);
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all var(--transition-medium);
-        }
-
-        .dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        .org-pyramid {
-            margin: var(--spacing-md) 0;
-            position: relative;
-        }
-
-        .org-level {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 35px 0;
-            gap: var(--spacing-xs);
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        .org-level.level-3 {
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 35px auto;
-            gap: var(--spacing-sm);
-            flex-wrap: nowrap;
-        }
-
-        .org-level:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            bottom: -17px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 15px;
-            background: var(--primary-red);
-        }
-
-        .org-box {
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            color: white;
-            border-radius: var(--border-radius-md);
-            padding: 8px;
-            box-shadow: var(--shadow-medium);
-            transition: all var(--transition-medium);
-            text-align: center;
-            width: 100%;
-            max-width: 180px;
-            font-size: var(--body-size);
-        }
-
-        .org-box:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .org-box.executive {
-            background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
-            max-width: 250px;
-            font-size: var(--h4-size);
-        }
-
-        .pie-chart {
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            background: conic-gradient(
-                var(--primary-red) 0deg 164.4deg,
-                var(--secondary-red) 164.4deg 276.2deg,
-                var(--accent-red) 276.2deg 360deg
-            );
-            margin: 0 auto;
-            box-shadow: var(--shadow-medium);
-            position: relative;
-            border: 8px solid white;
-        }
-
-        .pie-chart::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150px;
-            height: 150px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: inset 0 0 20px rgba(220, 28, 87, 0.2);
-        }
-
-        .chart-info {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            background: white;
-            padding: var(--spacing-sm);
-            border-radius: var(--border-radius-sm);
-            border: 2px solid var(--border-gray);
-            box-shadow: var(--shadow-light);
-            transition: all var(--transition-medium);
-            font-size: var(--small-size);
-        }
-
-        .legend-item:hover {
-            transform: translateX(10px);
-            border-color: var(--primary-red);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            flex-shrink: 0;
-        }
-
-        .legend-text {
-            font-size: var(--body-size);
-            font-weight: bold;
-            color: var(--text-gray);
-        }
-
-        .stats-horizontal {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-            margin: var(--spacing-lg) 0;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, white, var(--light-red));
-            border: 2px solid var(--primary-red);
-            border-radius: var(--border-radius-lg);
-            padding: var(--spacing-lg);
-            text-align: center;
-            transition: all var(--transition-medium);
-            min-width: 180px;
-            flex: 1;
-            box-shadow: var(--shadow-light);
-        }
-
-        .stat-card:hover {
-            transform: scale(1.05) rotate(-1deg);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .stat-number {
-            font-size: 2.8em;
-            font-weight: bold;
-            margin-bottom: var(--spacing-xs);
-            color: var(--primary-red);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: var(--body-size);
-            color: var(--text-gray);
-            font-weight: 600;
-        }
-
-        .stats-charts-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-lg);
-            margin: var(--spacing-lg) 0;
-        }
-
-        .chart-container {
-            background: white;
-            border-radius: var(--border-radius-lg);
-            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-md);
-            box-shadow: var(--shadow-medium);
-            border: 2px solid var(--border-gray);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .chart-container h3 {
-            margin-bottom: var(--spacing-sm);
-            margin-top: 0;
-        }
-
-        .bar-chart {
-            position: relative;
-            padding: var(--spacing-md);
-        }
-
-        .chart-bars {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-            height: 280px;
-            border-bottom: 2px solid var(--border-gray);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .bar-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-            position: relative;
-        }
-
-        .bar-label {
-            position: absolute;
-            bottom: -30px;
-            font-weight: bold;
-            color: var(--text-gray);
-            font-size: var(--body-size);
-        }
-
-        .bar-set {
-            display: flex;
-            gap: 8px;
-            align-items: flex-end;
-            height: 230px;
-        }
-
-        .bar {
-            width: 40px;
-            background: linear-gradient(to top, var(--primary-red), var(--accent-red));
-            border-radius: 4px 4px 0 0;
-            position: relative;
-            transition: all var(--transition-medium);
-            cursor: pointer;
-        }
-
-        .bar:hover {
-            transform: scaleY(1.05);
-            filter: brightness(1.1);
-        }
-
-        .bar.period1 {
-            background: linear-gradient(to top, var(--primary-red), var(--secondary-red));
-        }
-
-        .bar.period2 {
-            background: linear-gradient(to top, var(--orange), var(--light-orange));
-        }
-
-        .bar-value {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: bold;
-            font-size: 0.85em;
-            color: var(--text-gray);
-            white-space: nowrap;
-        }
-
-        .growth-indicator {
-            position: absolute;
-            top: -25px;
-            font-weight: bold;
-            font-size: 0.85em;
-            padding: 2px 6px;
-            border-radius: 10px;
-            white-space: nowrap;
-        }
-
-        .growth-indicator.positive {
-            color: #059669;
-            background: #d1fae5;
-        }
-
-        .growth-indicator.negative {
-            color: #dc2626;
-            background: #fee2e2;
-        }
-
-        .chart-legend {
-            display: flex;
-            justify-content: center;
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-sm);
-        }
-
-        .chart-legend .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85em;
-            padding: 6px 12px;
-            background: white;
-            border-radius: var(--border-radius-sm);
-            border: 1px solid var(--border-gray);
-            box-shadow: var(--shadow-light);
-        }
-
-        .legend-color.period1 {
-            background: linear-gradient(to right, var(--primary-red), var(--secondary-red));
-        }
-
-        .legend-color.period2 {
-            background: linear-gradient(to right, var(--orange), var(--light-orange));
-        }
-
-        .chart-insight {
-            text-align: center;
-            margin-top: var(--spacing-sm);
-            padding: 6px 6px;
-            background: var(--light-red);
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1.1em;
-            color: var(--primary-red);
-        }
-
-        .comparison-chart {
-            padding: var(--spacing-md);
-        }
-
-        .comparison-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: var(--spacing-md);
-            padding: var(--spacing-sm);
-            border-radius: var(--border-radius-sm);
-            transition: all var(--transition-medium);
-        }
-
-        .comparison-row:hover {
-            background: var(--light-gray);
-        }
-
-        .comparison-row.highlight {
-            background: var(--light-red);
-        }
-
-        .comparison-label {
-            width: 150px;
-            font-weight: bold;
-            color: var(--text-gray);
-        }
-
-        .comparison-bars {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin: 0 var(--spacing-md);
-        }
-
-        .comp-bar {
-            height: 30px;
-            background: linear-gradient(to right, var(--primary-red), var(--accent-red));
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            padding: 0 var(--spacing-sm);
-            position: relative;
-            transition: all var(--transition-medium);
-        }
-
-        .comp-bar.period1 {
-            background: linear-gradient(to right, var(--primary-red), var(--secondary-red));
-        }
-
-        .comp-bar.period2 {
-            background: linear-gradient(to right, var(--orange), var(--light-orange));
-        }
-
-        .comp-value {
-            color: white;
-            font-weight: bold;
-            margin-left: auto;
-        }
-
-        .chart-unit {
-            text-align: right;
-            font-size: var(--small-size);
-            color: var(--text-gray);
-            margin-top: var(--spacing-sm);
-        }
-
-        .donut-chart-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .donut-chart {
-            width: 300px;
-            position: relative;
-        }
-
-        .donut-svg {
-            width: 100%;
-            height: auto;
-        }
-
-        .donut-center-text {
-            font-size: 14px;
-            fill: var(--text-gray);
-        }
-
-        .donut-period {
-            font-weight: bold;
-            fill: var(--primary-red);
-        }
-
-        .donut-total {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .donut-legend {
-            margin-top: var(--spacing-sm);
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xs);
-            align-items: center;
-            text-align: center;
-        }
-
-        .donut-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .donut-legend-item strong {
-            color: var(--primary-red);
-        }
-
-        .period-toggle {
-            display: flex;
-            gap: 6px;
-            margin-top: var(--spacing-lg);
-            justify-content: center;
-        }
-
-        .toggle-btn {
-            background: white;
-            border: 2px solid var(--primary-red);
-            color: var(--primary-red);
-            padding: 6px 14px;
-            border-radius: 18px;
-            cursor: pointer;
-            transition: all var(--transition-medium);
-            font-weight: 600;
-            font-size: var(--small-size);
-        }
-
-        .toggle-btn:hover {
-            background: var(--light-red);
-            transform: scale(1.05);
-        }
-
-        .toggle-btn.active {
-            background: var(--primary-red);
-            color: white;
-        }
-
-        .process-horizontal {
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            gap: var(--spacing-md);
-            margin: var(--spacing-lg) 0;
-            flex-wrap: wrap;
-        }
-
-        .process-step {
-            flex: 1;
-            background: white;
-            border: 2px solid var(--border-gray);
-            border-radius: var(--border-radius-md);
-            padding: var(--spacing-md);
-            text-align: center;
-            position: relative;
-            transition: all var(--transition-medium);
-            min-width: 140px;
-            box-shadow: var(--shadow-light);
-        }
-
-        .process-step:hover {
-            border-color: var(--primary-red);
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .process-step::after {
-            content: '→';
-            position: absolute;
-            right: -22px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.8em;
-            color: var(--primary-red);
-            font-weight: bold;
-        }
-
-        .process-step:last-child::after {
-            display: none;
-        }
-
-        .step-number {
-            background: var(--primary-red);
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--spacing-sm);
-            font-weight: bold;
-            font-size: var(--body-size);
-        }
-
-        .process-step:first-child .step-number,
-        .process-step:last-child .step-number {
-            background: #6b7280;
-        }
-
-        .process-step h4 {
-            font-size: var(--small-size);
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .process-step p {
-            font-size: var(--small-size);
-            color: var(--text-gray);
-        }
-
-        .timeline {
-            position: relative;
-            padding: var(--spacing-md) 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--primary-red);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: var(--spacing-lg) 0;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: var(--primary-red);
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: var(--shadow-light);
-            z-index: 1;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: white;
-            padding: var(--spacing-md);
-            border-radius: var(--border-radius-md);
-            border: 2px solid var(--border-gray);
-            box-shadow: var(--shadow-light);
-            transition: all var(--transition-medium);
-        }
-
-        .timeline-content:hover {
-            border-color: var(--primary-red);
-            transform: scale(1.02);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: auto;
-        }
-
-        .language-switcher {
-            position: fixed;
-            top: var(--spacing-lg);
-            right: var(--spacing-lg);
-            display: flex;
-            gap: 5px;
-            z-index: 1001;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 5px;
-            box-shadow: var(--shadow-medium);
-            backdrop-filter: blur(10px);
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: none;
-            border-radius: 20px;
-            padding: var(--spacing-xs) 18px;
-            font-size: var(--small-size);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-medium);
-            color: var(--text-gray);
-        }
-
-        .lang-btn:hover {
-            background: rgba(220, 28, 87, 0.1);
-            transform: scale(1.05);
-        }
-
-        .lang-btn.active {
-            background: var(--primary-red);
-            color: white;
-            box-shadow: var(--shadow-light);
-        }
-
-        .navigation {
-            position: fixed;
-            bottom: var(--spacing-lg);
-            right: var(--spacing-lg);
-            display: flex;
-            gap: var(--spacing-sm);
-            z-index: 1000;
-        }
-
-        .nav-btn {
-            background: var(--primary-red);
-            border: none;
-            border-radius: 50%;
-            width: 55px;
-            height: 55px;
-            color: white;
-            font-size: 1.4em;
-            cursor: pointer;
-            transition: all var(--transition-medium);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .nav-btn:hover {
-            background: var(--secondary-red);
-            transform: scale(1.1);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .slide-counter {
-            position: fixed;
-            bottom: var(--spacing-lg);
-            left: var(--spacing-lg);
-            background: rgba(220, 28, 87, 0.9);
-            color: white;
-            padding: var(--spacing-xs) var(--spacing-md);
-            border-radius: 25px;
-            font-weight: bold;
-            z-index: 1000;
-            font-size: var(--small-size);
-        }
-
-        .transformation-notice {
-            text-align: center;
-            margin-top: var(--spacing-lg);
-            padding: var(--spacing-sm) var(--spacing-md);
-            background: rgba(254, 242, 242, 0.6);
-            border-radius: var(--border-radius-sm);
-            border: 1px solid rgba(248, 113, 113, 0.4);
-        }
-
-        .transformation-notice p {
-            font-size: var(--body-size);
-            color: var(--primary-red);
-            font-weight: bold;
-            font-style: italic;
-            margin: 0;
-        }
-
-        @media (max-width: 1024px) {
-            .two-column, .split-layout, .chart-layout {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-lg);
-            }
-            
-            .stats-charts-section {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-md);
-            }
-            
-            .process-horizontal {
-                flex-direction: column;
-            }
-            
-            .process-step::after {
-                content: '↓';
-                right: 50%;
-                top: auto;
-                bottom: -22px;
-                transform: translateX(50%);
-            }
-
-            .process-step:last-child::after {
-                display: none;
-            }
-            
-            .stats-horizontal {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .container {
-                padding: 0 var(--spacing-sm);
-            }
-        }
-
-        @media (max-width: 768px) {
-            :root {
-                --h1-size: 2.5em;
-                --h2-size: 2em;
-                --h3-size: 1.5em;
-                --spacing-xs: 10px;
-                --spacing-lg: 25px;
-                --spacing-xl: 40px;
-            }
-
-            .image-carousel {
-                width: 100%;
-                height: 300px;
-                margin: var(--spacing-md) auto;
-            }
-            
-            .carousel-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 1em;
-            }
-
-            .org-level.level-3 {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: var(--spacing-sm);
-                max-width: 100%;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-content {
-                width: calc(100% - 60px);
-                margin-left: 40px !important;
-            }
-            
-            .timeline-item::before {
-                left: 20px;
-                transform: translateY(-50%);
-            }
-            
-            .pie-chart {
-                width: 280px;
-                height: 280px;
-            }
-
-            .language-switcher {
-                top: var(--spacing-md);
-                right: var(--spacing-md);
-                padding: 3px;
-            }
-            
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 0.8em;
-            }
-
-            .navigation {
-                bottom: var(--spacing-md);
-                right: var(--spacing-md);
-            }
-
-            .slide-counter {
-                bottom: var(--spacing-md);
-                left: var(--spacing-md);
-            }
-
-            .chart-bars {
-                height: 200px;
-            }
-
-            .bar-set {
-                height: 180px;
-            }
-
-            .bar {
-                width: 30px;
-            }
-
-            .bar-value {
-                font-size: 0.75em;
-            }
-
-            .comparison-label {
-                width: 100px;
-                font-size: 0.85em;
-            }
-
-            .donut-chart {
-                width: 250px;
-            }
-            .content-card {
-        padding: var(--spacing-xs) !important;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大阪黃金週 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --paper: #f5f0e8;
+    --vermillion: #c94030;
+    --gold: #b8922a;
+    --mist: #8a8478;
+    --cream: #ede8da;
+    --dark-paper: #2a2218;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background-color: var(–paper);
+color: var(–ink);
+font-family: ‘Noto Serif TC’, serif;
+font-weight: 300;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* Grain overlay */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 1000;
+opacity: 0.4;
+}
+
+/* HERO */
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 8vw 10vw;
+position: relative;
+overflow: hidden;
+background: var(–dark-paper);
+}
+
+.hero::after {
+content: ‘大阪’;
+position: absolute;
+right: -2vw;
+top: 50%;
+transform: translateY(-50%);
+font-size: clamp(200px, 30vw, 420px);
+font-weight: 900;
+color: rgba(255,255,255,0.03);
+letter-spacing: -0.05em;
+line-height: 1;
+pointer-events: none;
+}
+
+.hero-badge {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: clamp(12px, 1.2vw, 16px);
+color: var(–gold);
+letter-spacing: 0.3em;
+text-transform: uppercase;
+margin-bottom: 2rem;
+opacity: 0;
+animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero-title {
+font-size: clamp(48px, 8vw, 120px);
+font-weight: 900;
+color: var(–paper);
+line-height: 0.95;
+letter-spacing: -0.03em;
+margin-bottom: 1.5rem;
+opacity: 0;
+animation: fadeUp 0.8s 0.4s forwards;
+}
+
+.hero-title span {
+color: var(–vermillion);
+}
+
+.hero-sub {
+font-size: clamp(14px, 1.4vw, 18px);
+color: var(–mist);
+font-weight: 300;
+letter-spacing: 0.1em;
+opacity: 0;
+animation: fadeUp 0.8s 0.6s forwards;
+max-width: 420px;
+line-height: 1.8;
+}
+
+.hero-flights {
+margin-top: 3rem;
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
+opacity: 0;
+animation: fadeUp 0.8s 0.8s forwards;
+}
+
+.flight-card {
+border: 1px solid rgba(184,146,42,0.3);
+padding: 1rem 1.5rem;
+background: rgba(184,146,42,0.05);
+}
+
+.flight-label {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 11px;
+letter-spacing: 0.3em;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 0.4rem;
+}
+
+.flight-info {
+font-size: clamp(16px, 1.6vw, 20px);
+color: var(–paper);
+font-weight: 600;
+letter-spacing: 0.05em;
+}
+
+.flight-time {
+font-size: 12px;
+color: var(–mist);
+margin-top: 0.2rem;
+font-weight: 300;
+}
+
+.scroll-hint {
+position: absolute;
+bottom: 3rem;
+left: 10vw;
+display: flex;
+align-items: center;
+gap: 1rem;
+color: var(–mist);
+font-size: 11px;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+opacity: 0;
+animation: fadeUp 0.8s 1.2s forwards;
+}
+
+.scroll-hint::before {
+content: ‘’;
+width: 40px;
+height: 1px;
+background: var(–mist);
+animation: lineGrow 1s 1.5s forwards;
+transform-origin: left;
+transform: scaleX(0);
+}
+
+@keyframes lineGrow {
+to { transform: scaleX(1); }
+}
+
+/* DAYS CONTAINER */
+.days-container {
+padding: 6vw 10vw;
+background: var(–paper);
+}
+
+.section-label {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: 13px;
+letter-spacing: 0.4em;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 4rem;
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+
+.section-label::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: linear-gradient(to right, var(–gold), transparent);
+opacity: 0.4;
+}
+
+/* DAY CARD */
+.day-card {
+display: grid;
+grid-template-columns: 80px 1fr;
+gap: 0;
+margin-bottom: 0;
+position: relative;
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.6s, transform 0.6s;
+}
+
+.day-card.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+.day-card:not(:last-child)::after {
+content: ‘’;
+position: absolute;
+left: 39px;
+top: 72px;
+bottom: -1px;
+width: 1px;
+background: linear-gradient(to bottom, var(–gold), var(–cream));
+opacity: 0.4;
+}
+
+.day-number {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-top: 1.5rem;
+position: relative;
+z-index: 1;
+}
+
+.day-dot {
+width: 10px;
+height: 10px;
+background: var(–vermillion);
+border-radius: 50%;
+margin-bottom: 0.5rem;
+box-shadow: 0 0 0 4px var(–paper), 0 0 0 5px rgba(201,64,48,0.3);
+}
+
+.day-num-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 11px;
+letter-spacing: 0.2em;
+color: var(–mist);
+writing-mode: vertical-rl;
+text-orientation: mixed;
+transform: rotate(180deg);
+margin-top: 0.5rem;
+}
+
+.day-content {
+padding: 1.5rem 0 3rem 2rem;
+border-left: none;
+}
+
+.day-header {
+margin-bottom: 1.5rem;
+}
+
+.day-date {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: 12px;
+letter-spacing: 0.3em;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 0.4rem;
+}
+
+.day-title {
+font-size: clamp(22px, 3vw, 36px);
+font-weight: 900;
+color: var(–ink);
+line-height: 1.1;
+letter-spacing: -0.02em;
+}
+
+.day-subtitle {
+font-size: 13px;
+color: var(–mist);
+margin-top: 0.3rem;
+font-style: italic;
+}
+
+/* TIMELINE */
+.timeline {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+
+.timeline-item {
+display: grid;
+grid-template-columns: 70px 1fr;
+gap: 1rem;
+padding: 0.6rem 0;
+border-bottom: 1px solid rgba(138,132,120,0.1);
+transition: background 0.2s;
+}
+
+.timeline-item:hover {
+background: rgba(184,146,42,0.04);
+margin: 0 -1rem;
+padding-left: 1rem;
+padding-right: 1rem;
+}
+
+.timeline-item:last-child {
+border-bottom: none;
+}
+
+.tl-time {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 13px;
+color: var(–gold);
+letter-spacing: 0.05em;
+padding-top: 0.15rem;
+white-space: nowrap;
+}
+
+.tl-body {}
+
+.tl-place {
+font-size: 15px;
+font-weight: 600;
+color: var(–ink);
+margin-bottom: 0.15rem;
+}
+
+.tl-place.highlight {
+color: var(–vermillion);
+}
+
+.tl-note {
+font-size: 12px;
+color: var(–mist);
+font-weight: 300;
+line-height: 1.5;
+}
+
+.tl-tag {
+display: inline-block;
+font-size: 10px;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+padding: 2px 8px;
+border: 1px solid currentColor;
+border-radius: 2px;
+margin-left: 0.5rem;
+vertical-align: middle;
+font-weight: 400;
+}
+
+.tag-shop { color: var(–gold); }
+.tag-food { color: #7a9e6e; }
+.tag-warn { color: var(–vermillion); }
+.tag-arch { color: #6e8aad; }
+
+/* ALERT BOX */
+.alert-box {
+background: rgba(201,64,48,0.05);
+border-left: 3px solid var(–vermillion);
+padding: 0.8rem 1rem;
+margin-top: 1rem;
+font-size: 12px;
+color: var(–mist);
+line-height: 1.6;
+}
+
+.alert-box strong {
+color: var(–vermillion);
+font-weight: 600;
+}
+
+/* SHOPPING BADGE */
+.shopping-strip {
+background: var(–cream);
+border-left: 3px solid var(–gold);
+padding: 0.7rem 1rem;
+margin-top: 1rem;
+font-size: 12px;
+color: var(–mist);
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.shopping-strip strong {
+color: var(–gold);
+font-weight: 600;
+}
+
+/* TIPS SECTION */
+.tips-section {
+background: var(–dark-paper);
+padding: 6vw 10vw;
+color: var(–paper);
+}
+
+.tips-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 1.5rem;
+margin-top: 2rem;
+}
+
+.tip-item {
+border: 1px solid rgba(255,255,255,0.08);
+padding: 1.5rem;
+position: relative;
+overflow: hidden;
+transition: border-color 0.3s;
+}
+
+.tip-item:hover {
+border-color: rgba(184,146,42,0.4);
+}
+
+.tip-item::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0;
+width: 3px; height: 100%;
+background: var(–gold);
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.tip-item:hover::before { opacity: 1; }
+
+.tip-title {
+font-size: 13px;
+font-weight: 600;
+color: var(–gold);
+letter-spacing: 0.1em;
+margin-bottom: 0.5rem;
+}
+
+.tip-text {
+font-size: 12px;
+color: var(–mist);
+line-height: 1.7;
+font-weight: 300;
+}
+
+/* FOOTER */
+footer {
+background: var(–dark-paper);
+border-top: 1px solid rgba(255,255,255,0.05);
+padding: 2rem 10vw;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: gap;
+}
+
+.footer-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: 13px;
+color: var(–mist);
+letter-spacing: 0.1em;
+}
+
+.footer-dates {
+font-size: 12px;
+color: rgba(138,132,120,0.5);
+letter-spacing: 0.2em;
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* Divider between days */
+.day-divider {
+height: 1px;
+background: linear-gradient(to right, transparent, rgba(138,132,120,0.2), transparent);
+margin: 0 0 0 80px;
+}
+
+@media (max-width: 600px) {
+.hero { padding: 12vw 6vw; }
+.days-container { padding: 10vw 6vw; }
+.day-card { grid-template-columns: 50px 1fr; }
+.day-card:not(:last-child)::after { left: 24px; }
+.day-dot { }
+.tips-section { padding: 10vw 6vw; }
+footer { padding: 2rem 6vw; flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+
 </head>
 <body>
-    <!-- 首頁 -->
-    <section class="slide active">
-        <div class="container">
-            <div class="slide-content">
-                <div style="text-align: center;">
-                    <h1 data-translate="company_name" style="margin-bottom: 5px;">威拓精密股份有限公司</h1>
-                    <p style="font-size: 1.5em; color: var(--secondary-red); font-weight: 600; margin-bottom: var(--spacing-lg);" data-translate="company_name_en">WIN TOP PRECISION CO., LTD.</p>
-                </div>
-                
-                <!-- 5張照片輪播 -->
-                <div class="image-carousel">
-                    <div class="carousel-container">
-                        <div class="carousel-slides" id="carouselSlides">
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/Williyen/Wintop-pics/main/IMG_7854.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/Williyen/Wintop-pics/main/IMG_7855.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/Williyen/Wintop-pics/main/IMG_7856.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/Williyen/Wintop-pics/main/IMG_7857.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/Williyen/Wintop-pics/main/IMG_7858.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                        </div>
-                        
-                        <button class="carousel-btn prev" onclick="changeCarouselSlide(-1)">‹</button>
-                        <button class="carousel-btn next" onclick="changeCarouselSlide(1)">›</button>
-                        
-                        <div class="carousel-dots">
-                            <span class="dot active" onclick="currentCarouselSlide(1)"></span>
-                            <span class="dot" onclick="currentCarouselSlide(2)"></span>
-                            <span class="dot" onclick="currentCarouselSlide(3)"></span>
-                            <span class="dot" onclick="currentCarouselSlide(4)"></span>
-                            <span class="dot" onclick="currentCarouselSlide(5)"></span>
-                        </div>
-                    </div>
-                </div>
-                                   
-                <div style="text-align: center; margin: var(--spacing-lg) 0;">
-                    <div style="font-size: var(--h4-size); color: var(--secondary-red); font-weight: 600; background: rgba(220, 28, 87, 0.1); padding: var(--spacing-md); border-radius: var(--border-radius-md); display: inline-block;">
-                        <p style="margin: 0 0 var(--spacing-xs) 0; font-weight: bold; font-size: var(--small-size); color: var(--text-gray);"><span data-translate="area_info">土地面積：340坪 / 廠區樓板面積：200坪</span></p>
-                        <p style="margin: 0;"><span data-translate="full_address">815高雄市大社區旗楠路92之10號</span></p>
-                    </div>
-                </div>
-                
-                <div class="two-column">
-                    <div class="content-card hero-card">
-                        <h3 data-translate="core_values">企業核心價值</h3>
-                        <div class="text-content">
-                            <p><span class="highlight" data-translate="mold_expert">模具製造專家</span></p>
-                            <p><span class="highlight" data-translate="reverse_engineering">3D逆向工程</span></p>
-                            <p><span class="highlight" data-translate="trial_optimization">試模優化服務</span></p>
-                            <p><span class="highlight" data-translate="quality_assurance">精密品質保證</span></p>
-                        </div>
-                    </div>
-                    <div class="content-card hero-card">
-                        <h3 data-translate="technical_services">專業技術服務</h3>
-                        <div class="text-content">
-                            <p><strong data-translate="extrusion_mold">擠型模具專業製造</strong></p>
-                            <p><strong data-translate="reverse_tech">3D逆向工程技術</strong></p>
-                            <p><strong data-translate="trial_service">模具試模與優化</strong></p>
-                            <p><span data-translate="hardware_parts">精密五金零件製造</span></p>
-                            <p><span data-translate="golf_head">高爾夫球頭專業加工</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 公司沿革 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="company_history">重要發展歷程</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-content brand-accent">
-                            <h3 data-translate="establishment">創立奠基</h3>
-                            <p><strong data-translate="founding_date">2024年5月</strong> - <span data-translate="founding_desc">秉持「品質第一、誠信經營」理念創立，專注高品質五金製品及精密加工服務，建立穩固的技術基礎</span></p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content brand-accent">
-                            <h3 data-translate="business_expansion">業務拓展</h3>
-                            <p data-translate="expansion_desc">主要營業項目全面涵蓋五金零件製造、高爾夫球頭加工以及模具開發與製造，廣泛應用於機械、汽機車、建築與模具產業</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content brand-accent">
-                            <h3 data-translate="tech_upgrade">技術升級</h3>
-                            <p data-translate="upgrade_desc">持續引進國際先進生產設備與技術，致力於技術研發與專業人員培訓，全面提升產品精度與加工效率，滿足客戶多元化需求</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content brand-accent">
-                            <h3 data-translate="future_vision">未來願景</h3>
-                            <p data-translate="vision_desc">深耕專業技術領域，擴大營運規模，朝向精密製造與智慧生產邁進，成為業界標竿，為客戶創造更高附加價值</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
 
-    <!-- 組織架構 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="org_structure">威拓組織圖</h2>
-                    <div class="org-pyramid">
-                        <!-- 第一層：董事長 -->
-                        <div class="org-level level-1">
-                            <div class="org-box executive">
-                                <strong data-translate="chairman">董事長</strong><br>姜淑葳
-                            </div>
-                        </div>
-                        
-                        <!-- 第二層：執行副總經理 -->
-                        <div class="org-level level-2">
-                            <div class="org-box executive">
-                                <strong data-translate="vice_president">執行副總經理</strong><br>劉寶欽
-                            </div>
-                        </div>
-                        
-                        <!-- 第三層：各部門 -->
-                        <div class="org-level level-3">
-                            <div class="org-box">
-                                <strong data-translate="admin_dept">管理部</strong><br>
-                                <small data-translate="admin_functions" style="font-size: 0.85em; font-weight: bold; color: rgba(255,255,255,0.95);">人事、總務、帳務、採購</small>
-                            </div>
-                            <div class="org-box">
-                                <strong data-translate="sales_dept">業務/行銷部</strong><br>
-                                <small data-translate="sales_functions" style="font-size: 0.85em; font-weight: bold; color: rgba(255,255,255,0.95);">客戶開發、報價、出貨</small>
-                            </div>
-                            <div class="org-box">
-                                <strong data-translate="rd_dept">研發部</strong><br>
-                                <small data-translate="rd_functions" style="font-size: 0.85em; font-weight: bold; color: rgba(255,255,255,0.95);">產品設計、開發、程式編輯</small>
-                            </div>
-                            <div class="org-box">
-                                <strong data-translate="production_dept">生產部</strong><br>
-                                <small data-translate="production_functions" style="font-size: 0.85em; font-weight: bold; color: rgba(255,255,255,0.95);">製造、機台維護、排程</small>
-                            </div>
-                            <div class="org-box">
-                                <strong data-translate="qa_dept">品管部</strong><br>
-                                <small data-translate="qa_functions" style="font-size: 0.85em; font-weight: bold; color: rgba(255,255,255,0.95);">檢驗、測試</small>
-                            </div>
-                        </div>
-                    </div>
-                <div style="text-align: center; margin: var(--spacing-md) 0;">
-                    <p style="font-size: var(--h4-size); color: var(--secondary-red); font-weight: 600; background: rgba(220, 28, 87, 0.1); padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--border-radius-md); display: inline-block;" data-translate="current_employees">現有員工：6人</p>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+  <div class="hero-badge">Golden Week 2025 ・ Travel Itinerary</div>
+  <h1 class="hero-title">黃金週<br><span>大阪</span></h1>
+  <p class="hero-sub">五天四夜・本町發　從港都神戶到宇治茶香，從戰後建築到難波燈火。</p>
 
-    <!-- 產品佔比 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="product_analysis">產品營業佔比</h2>
-                <div class="chart-layout">
-                    <div>
-                        <div class="pie-chart"></div>
-                    </div>
-                    <div class="chart-info">
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--primary-red);"></div>
-                            <div>
-                                <div class="legend-text" data-translate="hardware_components">五金零件</div>
-                                <div style="font-size: 2.2em; font-weight: bold; color: var(--primary-red);">45.7%</div>
-                                <small style="color: var(--text-gray);" data-translate="hardware_desc">多樣化精密零件製造</small>
-                            </div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--secondary-red);"></div>
-                            <div>
-                                <div class="legend-text" data-translate="golf_heads">高爾夫球頭</div>
-                                <div style="font-size: 2.2em; font-weight: bold; color: var(--secondary-red);">31.0%</div>
-                                <small style="color: var(--text-gray);" data-translate="golf_desc">專業球頭加工服務</small>
-                            </div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--accent-red);"></div>
-                            <div>
-                                <div class="legend-text" data-translate="mold_manufacturing">模具製造</div>
-                                <div style="font-size: 2.2em; font-weight: bold; color: var(--accent-red);">23.3%</div>
-                                <small style="color: var(--text-gray);" data-translate="mold_desc">擠型模具專業製造</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 產品介紹 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="core_product_services">主力產品線介紹</h2>
-                <div class="content-card brand-accent" style="margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--primary-red); text-align: center; font-size: 2em;">🚀 <span data-translate="mold_service_title">發展主力：專業模具製造服務</span></h3>
-                    <div style="text-align: center; margin-bottom: var(--spacing-md);">
-                        <p style="font-size: var(--h4-size); color: var(--secondary-red); font-weight: bold;" data-translate="business_growth">
-                            2024/05 業務占比 0% > 2025/05 業務占比 23.3%
-                        </p>
-                        <p style="font-size: var(--h4-size); color: var(--secondary-red); font-weight: bold; margin-top: var(--spacing-xs);" data-translate="yoy_growth">
-                            📈 YOY% = ∞
-                        </p>
-                    </div>
-                    <div class="two-column">
-                        <div>
-                            <h4 style="color: var(--primary-red);">🔄 <span data-translate="reverse_tech_title">3D逆向工程技術</span></h4>
-                            <div class="text-content">
-                                <p>• <strong data-translate="high_precision_scan">高精度3D掃描：</strong><span data-translate="scan_desc">精確擷取複雜幾何形狀</span></p>
-                                <p>• <strong data-translate="reverse_modeling">逆向建模：</strong><span data-translate="modeling_desc">CAD/CAM專業設計重建</span></p>
-                                <p>• <strong data-translate="dimension_analysis">尺寸分析：</strong><span data-translate="analysis_desc">原件與模型精密比對</span></p>
-                                <p>• <strong data-translate="design_optimization">優化設計：</strong><span data-translate="optimization_desc">改善原有結構缺陷</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--secondary-red);">🎯 <span data-translate="trial_service_title">試模優化服務</span></h4>
-                            <div class="text-content">
-                                <p>• <strong data-translate="first_trial">首次試模：</strong><span data-translate="trial_desc">驗證模具設計可行性</span></p>
-                                <p>• <strong data-translate="problem_diagnosis">問題診斷：</strong><span data-translate="diagnosis_desc">分析成型缺陷原因</span></p>
-                                <p>• <strong data-translate="mold_adjustment">模具調修：</strong><span data-translate="adjustment_desc">精密修正與優化</span></p>
-                                <p>• <strong data-translate="mass_verification">量產驗證：</strong><span data-translate="verification_desc">確保穩定生產品質</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="text-align: center; margin-top: var(--spacing-md);">
-                        <p style="font-size: var(--h4-size); color: var(--primary-red); font-weight: bold;" data-translate="service_summary_line1">
-                            重點開拓領域 • 模具生命週期
-                        </p>
-                        <p style="font-size: var(--h4-size); color: var(--secondary-red); font-weight: 600; margin-top: var(--spacing-xs);" data-translate="service_summary_line2">
-                            ~從逆向工程到量產優化的一站式服務~
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="two-column">
-                    <div class="content-card">
-                        <h3 style="color: var(--secondary-red);">🔧 <span data-translate="precision_hardware">精密五金零件</span></h3>
-                        <div class="text-content">
-                            <p data-translate="hardware_intro">目前主要營業項目，提供穩定營收基礎</p>
-                            <br>
-                            <p><strong data-translate="mature_tech">成熟技術能力：</strong></p>
-                            <p>• <span data-translate="cnc_tech">CNC精密加工技術</span></p>
-                            <p>• <span data-translate="surface_treatment">多元表面處理工藝</span></p>
-                            <p>• <span data-translate="quality_control">完整製程品質管控</span></p>
-                            <p>• <span data-translate="custom_design">客製化設計服務</span></p>
-                        </div>
-                    </div>
-                    <div class="content-card">
-                        <h3 style="color: var(--accent-red);">⛳ <span data-translate="golf_head_service">高爾夫球頭</span></h3>
-                        <div class="text-content">
-                            <p data-translate="golf_intro">專業技術延伸應用服務</p>
-                            <br>
-                            <p><strong data-translate="service_scope">專業服務範圍：</strong></p>
-                            <p>• <span data-translate="golf_mold_dev">球頭模具開發製造</span></p>
-                            <p>• <span data-translate="forging_casting">鍛造與鑄造工藝</span></p>
-                            <p>• <span data-translate="product_design">產品設計與打樣</span></p>
-                            <p>• <span data-translate="oem_odm">OEM/ODM完整服務</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 生產能力 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="production_capacity">生產能力與設備配置</h2>
-                <div class="split-layout">
-                    <div>
-                        <div class="content-card brand-accent">
-                            <h3 data-translate="precision_tech">精密加工技術</h3>
-                            <div class="stats-horizontal">
-                                <div class="stat-card">
-                                    <div class="stat-number">0.001</div>
-                                    <div class="stat-label" data-translate="precision_mm">加工精度(mm)</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-number">3.5</div>
-                                    <div class="stat-label" data-translate="avg_machines">平均機台運轉(台)</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="content-card brand-accent">
-                            <h3 data-translate="monthly_capacity">月產能績效表現</h3>
-                            <div class="stats-horizontal">
-                                <div class="stat-card">
-                                    <div class="stat-number">750</div>
-                                    <div class="stat-label" data-translate="hardware_pcs">五金零件(pcs)</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-number">500</div>
-                                    <div class="stat-label" data-translate="golf_pcs">球頭加工(pcs)</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-number">15</div>
-                                    <div class="stat-label" data-translate="mold_pcs">模具製造(pcs)</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-card" style="margin-top: var(--spacing-lg);">
-                    <h3 style="text-align: center; margin-bottom: var(--spacing-lg);" data-translate="equipment_config">主要生產設備配置</h3>
-                    <div class="stats-horizontal">
-                        <div class="stat-card">
-                            <div class="stat-number">15</div>
-                            <div class="stat-label" data-translate="machining_centers">綜合立式加工機</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">4</div>
-                            <div class="stat-label" data-translate="edm_machines">放電加工機</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">6</div>
-                            <div class="stat-label" data-translate="engraving_machines">精密雕刻機</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">25+</div>
-                            <div class="stat-label" data-translate="total_equipment">總設備台數</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 生產流程 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="mold_process_mgmt">逆向模具製造流程</h2>
-                <div class="content-card brand-accent" style="margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--primary-red); text-align: center;">🚀 <span data-translate="complete_mold_process">完整模具製造流程</span></h3>
-                    <div class="process-horizontal">
-                        <div class="process-step">
-                            <div class="step-number">1</div>
-                            <h4 data-translate="step1_title">3D逆向建圖</h4>
-                            <p data-translate="step1_desc">高精度掃描與CAD重建</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">2</div>
-                            <h4 data-translate="step2_title">車床加工</h4>
-                            <p data-translate="step2_desc">精密車削成型</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">3</div>
-                            <h4 data-translate="step3_title">熱處理</h4>
-                            <p data-translate="step3_desc">強化模具硬度</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">4</div>
-                            <h4 data-translate="step4_title">二次加工</h4>
-                            <p data-translate="step4_desc">精密修正加工</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">5</div>
-                            <h4 data-translate="step5_title">放電處理</h4>
-                            <p data-translate="step5_desc">複雜形狀加工</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">6</div>
-                            <h4 data-translate="step6_title">線切割</h4>
-                            <p data-translate="step6_desc">精密切割成型</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">7</div>
-                            <h4 data-translate="step7_title">試模優化</h4>
-                            <p data-translate="step7_desc">測試與調整</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">8</div>
-                            <h4 data-translate="step8_title">交付使用</h4>
-                            <p data-translate="step8_desc">品質保證出貨</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">9</div>
-                            <h4 data-translate="step9_title">試模回饋</h4>
-                            <p data-translate="step9_desc">蒐集試模數據以優化圖面</p>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">10</div>
-                            <h4 data-translate="step10_title">3D逆向建圖(續)</h4>
-                            <p data-translate="step10_desc">高精度掃描與CAD重建</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="two-column">
-                    <div class="content-card">
-                        <h3 style="color: var(--secondary-red);">🔧 <span data-translate="hardware_support_process">五金零件輔助製程</span></h3>
-                        <div class="text-content">
-                            <p><strong data-translate="standard_process">標準加工流程：</strong></p>
-                            <p data-translate="hardware_flow">圖面設計 → 材料準備 → CNC加工 → 品質檢驗 → 包裝出貨</p>
-                        </div>
-                    </div>
-                    <div class="content-card">
-                        <h3 style="color: var(--accent-red);">⛳ <span data-translate="golf_integration_service">球頭模具整合服務</span></h3>
-                        <div class="text-content">
-                            <p><strong data-translate="integration_service">整合性服務：</strong></p>
-                            <p data-translate="golf_flow">球頭模具設計 → 加工製造 → 試模調整 → 量產支援</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 逆向工程生產實績 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="reverse_engineering_results">模具生產實績</h2>
-                
-                <!-- 統計圖表區 -->
-                <div class="stats-charts-section">
-                    <!-- 第一個圖表：模具進度統計 -->
-                    <div class="chart-container">
-                        <h3 style="color: var(--primary-red); text-align: center; margin-bottom: var(--spacing-sm);" data-translate="mold_progress_stats">模具進度統計</h3>
-                        
-                        <div class="bar-chart">
-                            <div class="chart-bars">
-                                <div class="bar-group">
-                                    <div class="bar-label" data-translate="total_contracted">發包總數</div>
-                                    <div class="bar-set">
-                                        <div class="bar period1" style="height: 100%;">
-                                            <span class="bar-value">118</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bar-group">
-                                    <div class="bar-label" data-translate="incomplete_molds">未製完模具</div>
-                                    <div class="bar-set">
-                                        <div class="bar period2" style="height: 35.6%;">
-                                            <span class="bar-value">42</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bar-group">
-                                    <div class="bar-label" data-translate="pending_trial">未試模完成</div>
-                                    <div class="bar-set">
-                                        <div class="bar period1" style="height: 5.1%;">
-                                            <span class="bar-value">6</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bar-group">
-                                    <div class="bar-label" data-translate="trial_completed">試模完成</div>
-                                    <div class="bar-set">
-                                        <div class="bar period2" style="height: 59.3%;">
-                                            <span class="bar-value">70</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="chart-legend">
-                                <div class="legend-item">
-                                    <span class="legend-color period1"></span>
-                                    <span data-translate="status_pending">待處理項目</span>
-                                </div>
-                                <div class="legend-item">
-                                    <span class="legend-color period2"></span>
-                                    <span data-translate="status_completed">已完成項目</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="chart-insight">
-                            <p data-translate="mold_progress_insight">📊模具整體進度：已完成70項 (59.3%)，進行中48項 (40.7%)</p>
-                        </div>
-                    </div>
-
-                    <!-- 第二個圖表：正式量產前的試模次數統計 -->
-                    <div class="chart-container">
-                        <h3 style="color: var(--primary-red); text-align: center; margin-bottom: var(--spacing-sm);" data-translate="trial_count_stats">正式量產前的試模次數統計</h3>
-                        <div class="chart-wrapper">
-                            <div class="bar-chart">
-                                <div class="chart-bars">
-                                    <div class="bar-group">
-                                        <div class="bar-label">0次</div>
-                                        <div class="bar-set">
-                                            <div class="bar period1" style="height: 21.1%;">
-                                                <span class="bar-value">21.1%</span>
-                                            </div>
-                                            <div class="bar period2" style="height: 21.9%;">
-                                                <span class="bar-value">21.9%</span>
-                                            </div>
-                                        </div>
-                                        <div class="growth-indicator positive">+0.8%</div>
-                                    </div>
-                                    <div class="bar-group">
-                                        <div class="bar-label">1次</div>
-                                        <div class="bar-set">
-                                            <div class="bar period1" style="height: 36.8%;">
-                                                <span class="bar-value">36.8%</span>
-                                            </div>
-                                            <div class="bar period2" style="height: 59.4%;">
-                                                <span class="bar-value">59.4%</span>
-                                            </div>
-                                        </div>
-                                        <div class="growth-indicator positive">+22.5%</div>
-                                    </div>
-                                    <div class="bar-group">
-                                        <div class="bar-label">2次</div>
-                                        <div class="bar-set">
-                                            <div class="bar period1" style="height: 23.7%;">
-                                                <span class="bar-value">23.7%</span>
-                                            </div>
-                                            <div class="bar period2" style="height: 9.4%;">
-                                                <span class="bar-value">9.4%</span>
-                                            </div>
-                                        </div>
-                                        <div class="growth-indicator negative">-14.3%</div>
-                                    </div>
-                                    <div class="bar-group">
-                                        <div class="bar-label">≥3次</div>
-                                        <div class="bar-set">
-                                            <div class="bar period1" style="height: 18.4%;">
-                                                <span class="bar-value">18.4%</span>
-                                            </div>
-                                            <div class="bar period2" style="height: 9.4%;">
-                                                <span class="bar-value">9.4%</span>
-                                            </div>
-                                        </div>
-                                        <div class="growth-indicator negative">-9.1%</div>
-                                    </div>
-                                </div>
-                                <div class="chart-legend">
-                                    <div class="legend-item">
-                                        <span class="legend-color period1"></span>
-                                        <span>24/05-24/11</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <span class="legend-color period2"></span>
-                                        <span>24/12-25/05</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="chart-insight">
-                                <p data-translate="trial_insight">📊試模效率大幅提升：一次試模成功率從36.84%提升至59.38%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 模具生產成功率分析 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="success_rate_analysis_page">模具生產成功率分析</h2>
-                
-                <!-- 統計圖表區 -->
-                <div class="stats-charts-section">
-                    <!-- 第一個圖表：量產模具生產成功率比較（威拓 vs 舊廠商） -->
-                    <div class="chart-container">
-                        <h3 style="color: var(--primary-red); text-align: center; margin-bottom: var(--spacing-sm);" data-translate="success_rate_comparison">量產模具生產成功率比較</h3>
-                        <div class="comparison-chart">
-                            <div class="comparison-row">
-                                <div class="comparison-label"><span data-translate="inferior_to_old_vendor">遜於舊廠商</span></div>
-                                <div class="comparison-bars">
-                                    <div class="comp-bar period1" style="width: calc(19/24 * 100%);">
-                                        <span class="comp-value">19</span>
-                                    </div>
-                                    <div class="comp-bar period2" style="width: calc(18/34 * 100%);">
-                                        <span class="comp-value">18</span>
-                                    </div>
-                                </div>
-                                <div class="growth-indicator negative">-2.7%</div>
-                            </div>
-                            <div class="comparison-row highlight">
-                                <div class="comparison-label"><span data-translate="superior_to_old_vendor">優於舊廠商</span></div>
-                                <div class="comparison-bars">
-                                    <div class="comp-bar period1" style="width: calc(5/24 * 100%);">
-                                        <span class="comp-value">5</span>
-                                    </div>
-                                    <div class="comp-bar period2" style="width: calc(16/34 * 100%);">
-                                        <span class="comp-value">16</span>
-                                    </div>
-                                </div>
-                                <div class="growth-indicator positive">+52.4%</div>
-                            </div>
-                            <div class="chart-legend">
-                                <div class="legend-item">
-                                    <span class="legend-color period1"></span>
-                                    <span>24/05-24/11 (總計: 24個)</span>
-                                </div>
-                                <div class="legend-item">
-                                    <span class="legend-color period2"></span>
-                                    <span>24/12-25/05 (總計: 34個)</span>
-                                </div>
-                            </div>
-                            <div class="chart-unit">單位：個</div>
-                        </div>
-                        <div class="chart-insight">
-                            <p data-translate="comparison_insight">📊優於舊廠商比例從20.8%大幅提升至47.1%，競爭優勢明顯增強</p>
-                        </div>
-                    </div>
-
-                    <!-- 第二個圖表：量產模具生產成功率區間分析 -->
-                    <div class="chart-container">
-                        <h3 style="color: var(--primary-red); text-align: center; margin-bottom: var(--spacing-sm);" data-translate="success_rate_analysis">量產模具生產成功率區間分析</h3>
-                        <div class="donut-chart-container">
-                            <div class="donut-chart">
-                                <svg viewBox="0 0 200 200" class="donut-svg">
-                                    <!-- 背景圓環 -->
-                                    <circle cx="100" cy="100" r="70" fill="none" stroke="#f0f0f0" stroke-width="30"/>
-                                    <!-- Period 1 數據 -->
-                                    <g class="period1-data">
-                                        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--primary-red)" stroke-width="15"
-                                                stroke-dasharray="109.96 329.87" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
-                                        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--orange)" stroke-width="15"
-                                                stroke-dasharray="329.87 109.96" stroke-dashoffset="-109.96" transform="rotate(-90 100 100)"/>
-                                    </g>
-                                    <!-- Period 2 數據 -->
-                                    <g class="period2-data" style="display: none;">
-                                        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--primary-red)" stroke-width="15"
-                                                stroke-dasharray="64.75 375.08" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
-                                        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--orange)" stroke-width="15"
-                                                stroke-dasharray="375.08 64.75" stroke-dashoffset="-64.75" transform="rotate(-90 100 100)"/>
-                                    </g>
-                                    <text x="100" y="100" text-anchor="middle" dominant-baseline="middle" class="donut-center-text">
-                                        <tspan x="100" dy="-10" class="donut-period">24/05-24/11</tspan>
-                                        <tspan x="100" dy="25" class="donut-total">總計: 24個</tspan>
-                                    </text>
-                                </svg>
-                                <div class="donut-legend">
-                                    <div class="donut-legend-item">
-                                        <span class="legend-color" style="background: var(--primary-red); width: 20px; height: 12px; border-radius: 2px;"></span>
-                                        <span>👎≤60%: <strong class="value1">6</strong>個 (<span class="percent1">25.0%</span>)</span>
-                                    </div>
-                                    <div class="donut-legend-item">
-                                        <span class="legend-color" style="background: var(--orange); width: 20px; height: 12px; border-radius: 2px;"></span>
-                                        <span>👍≥60%: <strong class="value2">18</strong>個 (<span class="percent2">75.0%</span>)</span>
-                                    </div>
-                                </div>
-                                <div class="period-toggle">
-                                    <button class="toggle-btn active" onclick="togglePeriod(1)" id="period-btn-1">24/05-24/11</button>
-                                    <button class="toggle-btn" onclick="togglePeriod(2)" id="period-btn-2">24/12-25/05</button>
-                                </div>
-                            </div>
-                            <div class="chart-insight" style="margin-top: var(--spacing-sm);">
-                                <p data-translate="quality_insight">🎯高成功率(≥60%)模具比例從75.0%提升至85.3%，品質持續優化</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 結語 -->
-    <section class="slide">
-        <div class="container">
-            <div class="slide-content">
-                <h2 data-translate="development_vision">威拓的發展願景</h2>
-                <div class="two-column">
-                    <div class="content-card brand-accent">
-                        <h3 data-translate="mold_strategy" style="text-align: center;">模具技術發展策略</h3>
-                        <div class="text-content" style="font-size: var(--h4-size);">
-                            <p><span class="highlight" data-translate="strategy1">→ 深化3D逆向工程技術領先地位</span></p>
-                            <p><span class="highlight" data-translate="strategy2">→ 擴展試模優化服務範圍</span></p>
-                            <p><span class="highlight" data-translate="strategy3">→ 建立模具智慧製造體系</span></p>
-                            <p><span class="highlight" data-translate="strategy4">→ 提升模具精度與效率</span></p>
-                            <p><span class="highlight" data-translate="strategy5">→ 成為區域模具製造標竿</span></p>
-                        </div>
-                    </div>
-                    <div class="content-card brand-accent">
-                        <h3 data-translate="innovation_core" style="text-align: center;">持續精進的目標</h3>
-                        <div class="text-content" style="text-align: center;">
-                            <p style="font-size: var(--body-size); font-weight: 600; color: var(--text-gray); margin-bottom: var(--spacing-sm);"><span data-translate="core0">~讓大同擠型生產~</span></p>
-                            <p style="font-size: var(--h3-size); font-weight: 600; color: var(--primary-red); margin-bottom: var(--spacing-sm);"><span data-translate="core1">零試模</span></p>
-                            <p style="font-size: var(--h3-size); font-weight: 600; color: var(--primary-red); margin-bottom: var(--spacing-sm);"><span data-translate="core2">零間斷</span></p>
-                            <p style="font-size: var(--h3-size); font-weight: 600; color: var(--primary-red); margin-bottom: var(--spacing-lg);"><span data-translate="core3">零廢料</span></p>
-                            <p style="font-size: var(--h4-size); font-weight: 600; color: var(--text-gray);" data-translate="lifecycle_service">環保、永續、準確、穩定</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="transformation-notice">
-                    <p data-translate="business_transformation">~營業佔比正穩定轉型中~</p>
-                </div>
-                <div class="content-card" style="margin-top: var(--spacing-lg); text-align: center; background: var(--light-red);">
-                    <h3 style="font-size: 2.8em; margin-bottom: var(--spacing-md); color: var(--primary-red);" data-translate="thank_you">感謝聆聽</h3>
-                    <p style="font-size: var(--h3-size); color: var(--secondary-red); font-weight: 600;" data-translate="company_final">
-                        威拓精密股份有限公司
-                    </p>
-                    <p style="font-size: var(--h4-size); margin-top: var(--spacing-sm); color: var(--text-gray);" data-translate="tagline">
-                        模具製造專家 • 3D逆向工程 • 試模優化服務 • 精密品質保證
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 語言切換按鈕 -->
-    <div class="language-switcher">
-        <button class="lang-btn active" onclick="switchLanguage('zh')" id="zh-btn">中文</button>
-        <button class="lang-btn" onclick="switchLanguage('ja')" id="ja-btn">日本語</button>
+  <div class="hero-flights">
+    <div class="flight-card">
+      <div class="flight-label">去程 Outbound</div>
+      <div class="flight-info">GK54 ・ 捷星日本</div>
+      <div class="flight-time">5/1（四）　TPE 18:20 → KIX 22:00</div>
     </div>
-
-    <!-- 導航按鈕與計數器 -->
-    <div class="navigation">
-        <button class="nav-btn" onclick="prevSlide()">‹</button>
-        <button class="nav-btn" onclick="nextSlide()">›</button>
+    <div class="flight-card">
+      <div class="flight-label">回程 Return</div>
+      <div class="flight-info">CI0153 ・ 中華航空</div>
+      <div class="flight-time">5/6（二）　KIX 14:00 → TPE 16:00</div>
     </div>
-    
-    <div class="slide-counter">
-        <span id="currentSlideNum">1</span> / <span id="totalSlides">10</span>
+  </div>
+
+  <div class="scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- DAYS -->
+
+<section class="days-container">
+  <div class="section-label">行程總覽 Day by Day</div>
+
+  <!-- DAY 1 -->
+
+  <div class="day-card" data-day="1">
+    <div class="day-number">
+      <div class="day-dot"></div>
+      <div class="day-num-text">DAY 1</div>
     </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5 / 1　Thursday</div>
+        <div class="day-title">抵達・本町</div>
+        <div class="day-subtitle">落地即入夜，輕裝抵陣</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-time">18:20</div>
+          <div class="tl-body">
+            <div class="tl-place">桃園機場出發</div>
+            <div class="tl-note">GK54 捷星日本</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">22:00</div>
+          <div class="tl-body">
+            <div class="tl-place">關西空港抵達</div>
+            <div class="tl-note">入境・提領行李</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">22:30</div>
+          <div class="tl-body">
+            <div class="tl-place">空港急行 → 難波 → 本町</div>
+            <div class="tl-note">地鐵中央線・約40分</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">23:30</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">Super Hotel Premium 本町</div>
+            <div class="tl-note">辦理入住・便利商店解決晚餐</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script>
-        let currentSlideIndex = 0;
-        let currentCarouselIndex = 0;
-        let currentLanguage = 'zh';
+  <!-- DAY 2 -->
 
-        const translations = {
-            zh: {
-                company_name: "威拓精密股份有限公司",
-                company_name_en: "WIN TOP PRECISION CO., LTD.",
-                core_values: "企業核心價值",
-                mold_expert: "模具製造專家",
-                reverse_engineering: "3D逆向工程",
-                trial_optimization: "試模優化服務",
-                quality_assurance: "精密品質保證",
-                technical_services: "專業技術服務",
-                extrusion_mold: "擠型模具專業製造",
-                reverse_tech: "3D逆向工程技術",
-                trial_service: "模具試模與優化",
-                hardware_parts: "精密五金零件製造",
-                golf_head: "高爾夫球頭專業加工",
-                area_info: "土地面積：340坪 / 廠區樓板面積：200坪",
-                full_address: "815高雄市大社區旗楠路92之10號",
-                company_history: "重要發展歷程",
-                establishment: "創立奠基",
-                founding_date: "2024年5月",
-                founding_desc: "秉持「品質第一、誠信經營」理念創立，專注高品質五金製品及精密加工服務，建立穩固的技術基礎",
-                business_expansion: "業務拓展",
-                expansion_desc: "主要營業項目全面涵蓋五金零件製造、高爾夫球頭加工以及模具開發與製造，廣泛應用於機械、汽機車、建築與模具產業",
-                tech_upgrade: "技術升級",
-                upgrade_desc: "持續引進國際先進生產設備與技術，致力於技術研發與專業人員培訓，全面提升產品精度與加工效率，滿足客戶多元化需求",
-                future_vision: "未來願景",
-                vision_desc: "深耕專業技術領域，擴大營運規模，朝向精密製造與智慧生產邁進，成為業界標竿，為客戶創造更高附加價值",
-                org_structure: "威拓組織圖",
-                current_employees: "現有員工：6人",
-                chairman: "董事長",
-                vice_president: "執行副總經理",
-                admin_dept: "管理部",
-                admin_functions: "人事、總務、帳務、採購",
-                sales_dept: "業務/行銷部",
-                sales_functions: "客戶開發、報價、出貨",
-                rd_dept: "研發部",
-                rd_functions: "產品設計、開發、程式編輯",
-                production_dept: "生產部",
-                production_functions: "製造、機台維護、排程",
-                qa_dept: "品管部",
-                qa_functions: "檢驗、測試",
-                product_analysis: "產品營業佔比",
-                hardware_components: "五金零件",
-                hardware_desc: "多樣化精密零件製造",
-                golf_heads: "高爾夫球頭",
-                golf_desc: "專業球頭加工服務",
-                mold_manufacturing: "模具製造",
-                mold_desc: "擠型模具專業製造",
-                core_product_services: "主力產品線介紹",
-                mold_service_title: "發展主力：專業模具製造服務",
-                business_growth: "2024/05 營業占比 0% > 2025/05 營業占比 23.3%",
-                yoy_growth: "📈 YOY% = ∞",
-                reverse_tech_title: "3D逆向工程技術",
-                high_precision_scan: "高精度3D掃描：",
-                scan_desc: "精確擷取複雜幾何形狀",
-                reverse_modeling: "逆向建模：",
-                modeling_desc: "CAD/CAM專業設計重建",
-                dimension_analysis: "尺寸分析：",
-                analysis_desc: "原件與模型精密比對",
-                design_optimization: "優化設計：",
-                optimization_desc: "改善原有結構缺陷",
-                trial_service_title: "試模優化服務",
-                first_trial: "首次試模：",
-                trial_desc: "驗證模具設計可行性",
-                problem_diagnosis: "問題診斷：",
-                diagnosis_desc: "分析成型缺陷原因",
-                mold_adjustment: "模具調修：",
-                adjustment_desc: "精密修正與優化",
-                mass_verification: "量產驗證：",
-                verification_desc: "確保穩定生產品質",
-                service_summary_line1: "重點開拓領域 • 模具生命週期",
-                service_summary_line2: "~從逆向工程到量產優化的一站式服務~",
-                precision_hardware: "精密五金零件",
-                hardware_intro: "目前主要營業項目，提供穩定營收基礎",
-                mature_tech: "成熟技術能力：",
-                cnc_tech: "CNC精密加工技術",
-                surface_treatment: "多元表面處理工藝",
-                quality_control: "完整製程品質管控",
-                custom_design: "客製化設計服務",
-                golf_head_service: "高爾夫球頭",
-                golf_intro: "專業技術延伸應用服務",
-                service_scope: "專業服務範圍：",
-                golf_mold_dev: "球頭模具開發製造",
-                forging_casting: "鍛造與鑄造工藝",
-                product_design: "產品設計與打樣",
-                oem_odm: "OEM/ODM完整服務",
-                production_capacity: "生產能力與設備配置",
-                precision_tech: "精密加工技術",
-                precision_mm: "加工精度(mm)",
-                avg_machines: "平均機台運轉(台)",
-                monthly_capacity: "月產能績效表現",
-                hardware_pcs: "五金零件(pcs)",
-                golf_pcs: "球頭加工(pcs)",
-                mold_pcs: "模具製造(pcs)",
-                equipment_config: "主要生產設備配置",
-                machining_centers: "綜合立式加工機",
-                edm_machines: "放電加工機",
-                engraving_machines: "精密雕刻機",
-                total_equipment: "總設備台數",
-                mold_process_mgmt: "逆向模具製造流程",
-                complete_mold_process: "完整模具製造流程",
-                step1_title: "3D逆向建圖",
-                step1_desc: "高精度掃描與CAD重建",
-                step2_title: "車床加工",
-                step2_desc: "精密車削成型",
-                step3_title: "熱處理",
-                step3_desc: "強化模具硬度",
-                step4_title: "二次加工",
-                step4_desc: "精密修正加工",
-                step5_title: "放電處理",
-                step5_desc: "複雜形狀加工",
-                step6_title: "線切割",
-                step6_desc: "精密切割成型",
-                step7_title: "試模優化",
-                step7_desc: "測試與調整",
-                step8_title: "交付使用",
-                step8_desc: "品質保證出貨",
-                step9_title: "試模回饋",
-                step9_desc: "蒐集試模數據以優化圖面",
-                step10_title: "3D逆向建圖(續)",
-                step10_desc: "高精度掃描與CAD重建",
-                hardware_support_process: "五金零件輔助製程",
-                standard_process: "標準加工流程：",
-                hardware_flow: "圖面設計 → 材料準備 → CNC加工 → 品質檢驗 → 包裝出貨",
-                golf_integration_service: "球頭模具整合服務",
-                integration_service: "整合性服務：",
-                golf_flow: "球頭模具設計 → 加工製造 → 試模調整 → 量產支援",
-                reverse_engineering_results: "模具生產實績",
-                trial_count_stats: "正式量產前的試模次數統計",
-                trial_insight: "📊試模效率大幅提升：一次試模成功率從36.84%提升至59.38%",
-                success_rate_analysis_page: "模具生產成功率分析",
-                success_rate_comparison: "量產模具生產成功率比較",
-                success_rate_analysis: "量產模具生產成功率區間分析",
-                quality_insight: "🎯高成功率(≥60%)模具比例從75.0%提升至85.3%，品質持續優化",
-                comparison_insight: "📊優於舊廠商比例從20.8%大幅提升至47.1%，競爭優勢明顯增強",
-                inferior_to_old_vendor: "遜於舊廠商",
-                superior_to_old_vendor: "優於舊廠商",
-                mold_progress_stats: "模具進度統計",
-                total_contracted: "發包總數",
-                incomplete_molds: "未製完模具",
-                pending_trial: "未試模完成",
-                trial_completed: "試模完成",
-                status_pending: "待處理項目",
-                status_completed: "已完成項目",
-                mold_progress_insight: "📊模具整體進度：已完成70項 (59.3%)，進行中48項 (40.7%)",
-                development_vision: "威拓的發展願景",
-                mold_strategy: "模具技術發展策略",
-                strategy1: "→ 深化3D逆向工程技術領先地位",
-                strategy2: "→ 擴展試模優化服務範圍",
-                strategy3: "→ 建立模具智慧製造體系",
-                strategy4: "→ 提升模具精度與效率",
-                strategy5: "→ 成為區域模具製造標竿",
-                innovation_core: "持續精進的目標",
-                core0: "~讓大同擠型生產~",
-                core1: "零試模",
-                core2: "零間斷",
-                core3: "零廢料",
-                lifecycle_service: "環保、永續、準確、穩定",
-                thank_you: "感謝聆聽",
-                company_final: "威拓精密股份有限公司",
-                tagline: "模具製造專家 • 3D逆向工程 • 試模優化服務 • 精密品質保證",
-                business_transformation: "~營業佔比正穩定轉型中~"
-            },
-            ja: {
-                company_name: "ウィントップ精密株式会社",
-                company_name_en: "WIN TOP PRECISION CO., LTD.",
-                core_values: "企業コア価値",
-                mold_expert: "金型製造専門家",
-                reverse_engineering: "3Dリバースエンジニアリング",
-                trial_optimization: "試作最適化サービス",
-                quality_assurance: "精密品質保証",
-                technical_services: "専門技術サービス",
-                extrusion_mold: "押出金型専門製造",
-                reverse_tech: "3Dリバースエンジニアリング技術",
-                trial_service: "金型試作・最適化",
-                hardware_parts: "精密金属部品製造",
-                golf_head: "ゴルフヘッド専門加工",
-                area_info: "土地面積：340坪 / 工場床面積：200坪",
-                full_address: "815高雄市大社區旗楠路92之10號",
-                company_history: "重要発展プロセス",
-                establishment: "創立基盤",
-                founding_date: "2024年5月",
-                founding_desc: "「品質第一、誠実経営」理念で創立、高品質金属製品と精密加工サービスに専念し、堅実な技術基盤を構築",
-                business_expansion: "事業拡大",
-                expansion_desc: "主要事業項目は金属部品製造、ゴルフヘッド加工、金型開発・製造を全面的にカバーし、機械、自動車・オートバイ、建築、金型産業に広く応用",
-                tech_upgrade: "技術向上",
-                upgrade_desc: "国際先進生産設備と技術の継続的導入、技術研究開発と専門人材育成に注力し、製品精度と加工効率を全面的に向上、顧客の多様化ニーズに対応",
-                future_vision: "将来ビジョン",
-                vision_desc: "専門技術分野の深耕、運営規模の拡大、精密製造とスマート生産に向けて進み、業界標準となり、顧客により高い付加価値を創造",
-                org_structure: "ウィントップ組織図",
-                current_employees: "現在の従業員：6名",
-                chairman: "会長",
-                vice_president: "執行副社長",
-                admin_dept: "管理部",
-                admin_functions: "人事、総務、経理、調達",
-                sales_dept: "営業/マーケティング部",
-                sales_functions: "顧客開発、見積、出荷",
-                rd_dept: "研究開発部",
-                rd_functions: "製品設計、開発、プログラム編集",
-                production_dept: "生産部",
-                production_functions: "製造、設備保守、スケジューリング",
-                qa_dept: "品質管理部",
-                qa_functions: "検査、テスト",
-                product_analysis: "製品売上比率",
-                hardware_components: "金属部品",
-                hardware_desc: "多様化精密部品製造",
-                golf_heads: "ゴルフヘッド",
-                golf_desc: "専門ヘッド加工サービス",
-                mold_manufacturing: "金型製造",
-                mold_desc: "押出金型専門製造",
-                core_product_services: "主力製品ライン紹介",
-                mold_service_title: "発展の主力：専門金型製造サービス",
-                business_growth: "2024/05 売上比率 0% > 2025/05 売上比率 23.3%",
-                yoy_growth: "📈 前年比 = ∞",
-                reverse_tech_title: "3Dリバースエンジニアリング技術",
-                high_precision_scan: "高精度3Dスキャン：",
-                scan_desc: "複雑な幾何形状の精密取得",
-                reverse_modeling: "リバースモデリング：",
-                modeling_desc: "CAD/CAM専門設計再構築",
-                dimension_analysis: "寸法分析：",
-                analysis_desc: "原品とモデルの精密比較",
-                design_optimization: "設計最適化：",
-                optimization_desc: "既存構造欠陥の改善",
-                trial_service_title: "試作最適化サービス",
-                first_trial: "初回試作：",
-                trial_desc: "金型設計の実現可能性検証",
-                problem_diagnosis: "問題診断：",
-                diagnosis_desc: "成形不良原因分析",
-                mold_adjustment: "金型調整：",
-                adjustment_desc: "精密修正と最適化",
-                mass_verification: "量産検証：",
-                verification_desc: "安定生産品質確保",
-                service_summary_line1: "重点開拓分野 • 金型ライフサイクル",
-                service_summary_line2: "〜リバースエンジニアリングから量産最適化までのワンストップサービス〜",
-                precision_hardware: "精密金属部品",
-                hardware_intro: "現在の主要事業項目、安定した売上基盤を提供",
-                mature_tech: "成熟技術能力：",
-                cnc_tech: "CNC精密加工技術",
-                surface_treatment: "多元表面処理工芸",
-                quality_control: "完全工程品質管理",
-                custom_design: "カスタマイズ設計サービス",
-                golf_head_service: "ゴルフヘッド",
-                golf_intro: "専門技術拡張応用サービス",
-                service_scope: "専門サービス範囲：",
-                golf_mold_dev: "ヘッド金型開発製造",
-                forging_casting: "鍛造・鋳造工芸",
-                product_design: "製品設計・試作",
-                oem_odm: "OEM/ODM完全サービス",
-                production_capacity: "生産能力・設備配置",
-                precision_tech: "精密加工技術",
-                precision_mm: "加工精度(mm)",
-                avg_machines: "平均設備稼働(台)",
-                monthly_capacity: "月産能力実績",
-                hardware_pcs: "金属部品(pcs)",
-                golf_pcs: "ヘッド加工(pcs)",
-                mold_pcs: "金型製造(pcs)",
-                equipment_config: "主要生産設備配置",
-                machining_centers: "総合立型加工機",
-                edm_machines: "放電加工機",
-                engraving_machines: "精密彫刻機",
-                total_equipment: "総設備台数",
-                mold_process_mgmt: "リバース金型製造プロセス",
-                complete_mold_process: "完全金型製造工程",
-                step1_title: "3Dリバースモデリング",
-                step1_desc: "高精度スキャン・CAD再構築",
-                step2_title: "旋盤加工",
-                step2_desc: "精密切削成形",
-                step3_title: "熱処理",
-                step3_desc: "金型硬度強化",
-                step4_title: "二次加工",
-                step4_desc: "精密修正加工",
-                step5_title: "放電処理",
-                step5_desc: "複雑形状加工",
-                step6_title: "ワイヤカット",
-                step6_desc: "精密切断成形",
-                step7_title: "試作最適化",
-                step7_desc: "テスト・調整",
-                step8_title: "納品使用",
-                step8_desc: "品質保証出荷",
-                step9_title: "試作フィードバック",
-                step9_desc: "試作データ収集による図面最適化",
-                step10_title: "3Dリバースモデリング(続)",
-                step10_desc: "高精度スキャン・CAD再構築",
-                hardware_support_process: "金属部品補助工程",
-                standard_process: "標準加工工程：",
-                hardware_flow: "図面設計 → 材料準備 → CNC加工 → 品質検査 → 梱包出荷",
-                golf_integration_service: "ヘッド金型統合サービス",
-                integration_service: "統合サービス：",
-                golf_flow: "ヘッド金型設計 → 加工製造 → 試作調整 → 量産支援",
-                reverse_engineering_results: "金型生産実績",
-                trial_count_stats: "正式量産前の試作回数統計",
-                trial_insight: "📊試作効率が大幅向上：1回試作成功率が36.84%から59.38%に向上",
-                success_rate_analysis_page: "金型生産成功率分析",
-                success_rate_comparison: "量産金型生産成功率比較",
-                success_rate_analysis: "量産金型生産成功率区間分析",
-                quality_insight: "🎯高成功率(≥60%)金型の比率が75.0%から85.3%に向上、品質継続最適化",
-                comparison_insight: "📊従来メーカーを上回る比率が20.8%から47.1%に大幅向上、競争優位性が明確に強化",
-                inferior_to_old_vendor: "従来メーカーに劣る",
-                superior_to_old_vendor: "従来メーカーに優る",
-                mold_progress_stats: "金型進捗統計",
-                total_contracted: "発注総数",
-                incomplete_molds: "未完成金型",
-                pending_trial: "未試作完成",
-                trial_completed: "試作完成",
-                status_pending: "処理待ち項目",
-                status_completed: "完成済み項目",
-                mold_progress_insight: "📊金型全体進捗：完成済70項目 (59.3%)、進行中48項目 (40.7%)",
-                development_vision: "ウィントップの発展ビジョン",
-                mold_strategy: "金型技術発展戦略",
-                strategy1: "→ 3Dリバースエンジニアリング技術の先進地位深化",
-                strategy2: "→ 試作最適化サービス範囲拡大",
-                strategy3: "→ 金型スマート製造体系構築",
-                strategy4: "→ 金型精度・効率向上",
-                strategy5: "→ 地域金型製造標準となる",
-                innovation_core: "継続改善の目標",
-                core0: "大同の押出成形生産を",
-                core1: "ゼロ試作",
-                core2: "ゼロ中断",
-                core3: "ゼロ廃棄",
-                lifecycle_service: "環境保護・持続可能・正確・安定",
-                thank_you: "ご清聴ありがとうございました",
-                company_final: "ウィントップ精密株式会社",
-                tagline: "金型製造専門家 • 3Dリバースエンジニアリング • 試作最適化サービス • 精密品質保証",
-                business_transformation: "~売上比率は安定的に転換中~"
-            }
-        };
+  <div class="day-card" data-day="2">
+    <div class="day-number">
+      <div class="day-dot"></div>
+      <div class="day-num-text">DAY 2</div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5 / 2　Friday</div>
+        <div class="day-title">姬路城・神戶</div>
+        <div class="day-subtitle">白鷺天守 × 港灣夕照</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-time">07:30</div>
+          <div class="tl-body">
+            <div class="tl-place">本町出發</div>
+            <div class="tl-note">地鐵 → 大阪站 → JR神戶線</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">09:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">姬路城</div>
+            <div class="tl-note">開館即入・天守閣排隊早去早好</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">12:00</div>
+          <div class="tl-body">
+            <div class="tl-place">姬路周邊午餐<span class="tl-tag tag-food">食</span></div>
+            <div class="tl-note">穴子飯・豆腐御膳</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">14:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">神戶三宮・北野異人館</div>
+            <div class="tl-note">JR約30分抵達</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">16:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">神戶港塔</div>
+            <div class="tl-note">整修後重新開放・夕陽前最美</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">18:00</div>
+          <div class="tl-body">
+            <div class="tl-place">返回大阪難波</div>
+            <div class="tl-note">約1小時車程</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">19:30</div>
+          <div class="tl-body">
+            <div class="tl-place">大丸心齋橋<span class="tl-tag tag-shop">購</span></div>
+            <div class="tl-note">精品・化妝品為主</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">21:00</div>
+          <div class="tl-body">
+            <div class="tl-place">高島屋難波<span class="tl-tag tag-shop">購</span></div>
+            <div class="tl-note">地下食品街・生活雜貨</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        function showSlide(n) {
-            const slides = document.querySelectorAll('.slide');
-            const totalSlides = slides.length;
-            
-            if (n < 0) n = 0;
-            if (n >= totalSlides) n = totalSlides - 1;
-            
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === n) {
-                    slide.classList.add('active');
-                }
-            });
-            
-            currentSlideIndex = n;
-            document.getElementById('currentSlideNum').textContent = n + 1;
-            document.getElementById('totalSlides').textContent = totalSlides;
-        }
+  <!-- DAY 3 -->
 
-        function nextSlide() {
-            const slides = document.querySelectorAll('.slide');
-            if (currentSlideIndex < slides.length - 1) {
-                showSlide(currentSlideIndex + 1);
-            }
-        }
+  <div class="day-card" data-day="3">
+    <div class="day-number">
+      <div class="day-dot"></div>
+      <div class="day-num-text">DAY 3</div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5 / 3　Saturday</div>
+        <div class="day-title">明石・鳴門</div>
+        <div class="day-subtitle">吊橋巨構 × 陶板美術館</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-time">07:00</div>
+          <div class="tl-body">
+            <div class="tl-place">本町早出發</div>
+            <div class="tl-note">今日行程最長・務必早起</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">08:30</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">明石大橋（舞子公園）</div>
+            <div class="tl-note">JR舞子站・橋上展望台可入內</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">10:30</div>
+          <div class="tl-body">
+            <div class="tl-place">前往鳴門</div>
+            <div class="tl-note">高速巴士約1.5小時</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">12:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">大塚美術館<span class="tl-tag tag-warn">需預約</span></div>
+            <div class="tl-note">停留建議3-4小時・黃金週務必提前線上預約</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">16:30</div>
+          <div class="tl-body">
+            <div class="tl-place">返回大阪</div>
+            <div class="tl-note">約2小時</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">19:30</div>
+          <div class="tl-body">
+            <div class="tl-place">大丸梅田<span class="tl-tag tag-shop">購</span></div>
+            <div class="tl-note">服飾・生活雜貨・13F餐廳街晚餐</div>
+          </div>
+        </div>
+      </div>
+      <div class="alert-box">
+        <strong>⚠ 重要提醒</strong>　大塚美術館黃金週一票難求，請於出發前務必完成線上購票。
+      </div>
+    </div>
+  </div>
 
-        function prevSlide() {
-            if (currentSlideIndex > 0) {
-                showSlide(currentSlideIndex - 1);
-            }
-        }
+  <!-- DAY 4 -->
 
-        function showCarouselSlide(n) {
-            const slides = document.getElementById('carouselSlides');
-            const dots = document.querySelectorAll('.dot');
-            const totalSlides = 5;
-            
-            if (n < 0) n = totalSlides - 1;
-            if (n >= totalSlides) n = 0;
-            
-            currentCarouselIndex = n;
-            slides.style.transform = `translateX(-${n * 20}%)`;
-            
-            dots.forEach((dot, index) => {
-                dot.classList.remove('active');
-                if (index === n) {
-                    dot.classList.add('active');
-                }
-            });
-        }
+  <div class="day-card" data-day="4">
+    <div class="day-number">
+      <div class="day-dot"></div>
+      <div class="day-num-text">DAY 4</div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5 / 4　Sunday</div>
+        <div class="day-title">宇治茶香日</div>
+        <div class="day-subtitle">平等院 × 宇治川 × 伊藤久右衛門</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-time">08:30</div>
+          <div class="tl-body">
+            <div class="tl-place">本町出發</div>
+            <div class="tl-note">地鐵 → 鶴橋 → 近鐵宇治線</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">10:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">平等院鳳凰堂</div>
+            <div class="tl-note">開館即入・10円硬幣上的風景</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">11:30</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">宇治川散步</div>
+            <div class="tl-note">橘橋・中之島周邊</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">12:30</div>
+          <div class="tl-body">
+            <div class="tl-place">伊藤久右衛門本店<span class="tl-tag tag-food">食</span></div>
+            <div class="tl-note">抹茶蕎麥麵套餐 ＋ 抹茶聖代</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">14:30</div>
+          <div class="tl-body">
+            <div class="tl-place">宇治上神社・宇治神社</div>
+            <div class="tl-note">世界遺產・靜謐感極強</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">16:00</div>
+          <div class="tl-body">
+            <div class="tl-place">返回大阪</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">19:00</div>
+          <div class="tl-body">
+            <div class="tl-place">高島屋難波<span class="tl-tag tag-shop">購</span></div>
+            <div class="tl-note">晚餐 ＋ 雜貨補購</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">20:30</div>
+          <div class="tl-body">
+            <div class="tl-place">心齋橋藥妝<span class="tl-tag tag-shop">購</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        function changeCarouselSlide(direction) {
-            showCarouselSlide(currentCarouselIndex + direction);
-        }
+  <!-- DAY 5 -->
 
-        function currentCarouselSlide(n) {
-            showCarouselSlide(n - 1);
-        }
+  <div class="day-card" data-day="5">
+    <div class="day-number">
+      <div class="day-dot"></div>
+      <div class="day-num-text">DAY 5</div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5 / 5　Monday</div>
+        <div class="day-title">戰後復興建築巡禮</div>
+        <div class="day-subtitle">北浜 × 中之島 × 大阪站周邊・步行軸線</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-time">09:00</div>
+          <div class="tl-body">
+            <div class="tl-place">本町出發・地鐵至北浜</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">09:30</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">北浜レトロビル<span class="tl-tag tag-arch">建</span></div>
+            <div class="tl-note">英國古典式・現為咖啡廳・可在此吃早餐</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">10:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">日本銀行大阪支店<span class="tl-tag tag-arch">建</span></div>
+            <div class="tl-note">明治期西洋建築・外觀嚴肅典雅</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">10:30</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">大阪市中央公會堂<span class="tl-tag tag-arch">建</span></div>
+            <div class="tl-note">1918年・辰野金吾設計・新巴洛克紅磚</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">11:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">綿業會館<span class="tl-tag tag-arch">建</span></div>
+            <div class="tl-note">1931年竣工・戰前紡織業全盛象徵</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">11:30</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">適塾（緒方洪庵舊居）<span class="tl-tag tag-arch">建</span></div>
+            <div class="tl-note">蘭學啟蒙發源地・思想史意義深遠</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">12:30</div>
+          <div class="tl-body">
+            <div class="tl-place">中之島周邊午餐<span class="tl-tag tag-food">食</span></div>
+            <div class="tl-note">肥後橋割烹・老派洋食館</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">14:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">日本生命本館<span class="tl-tag tag-arch">建</span></div>
+            <div class="tl-note">昭和初期古典主義</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">15:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">大阪造幣局<span class="tl-tag tag-arch">建</span></div>
+            <div class="tl-note">黃金週請提前確認開放時間</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">18:30</div>
+          <div class="tl-body">
+            <div class="tl-place">梅田晚餐<span class="tl-tag tag-food">食</span></div>
+            <div class="tl-note">老舖洋食或居酒屋</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">20:00</div>
+          <div class="tl-body">
+            <div class="tl-place">大丸梅田<span class="tl-tag tag-shop">購</span></div>
+            <div class="tl-note">伴手禮集中採購・最後一次大規模購物</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        function togglePeriod(period) {
-            const period1Data = document.querySelector('.period1-data');
-            const period2Data = document.querySelector('.period2-data');
-            const centerText = document.querySelector('.donut-center-text');
-            const periodText = centerText ? centerText.querySelector('.donut-period') : null;
-            const totalText = centerText ? centerText.querySelector('.donut-total') : null;
-            const value1 = document.querySelector('.value1');
-            const value2 = document.querySelector('.value2');
-            const percent1 = document.querySelector('.percent1');
-            const percent2 = document.querySelector('.percent2');
-            const periodBtn1 = document.getElementById('period-btn-1');
-            const periodBtn2 = document.getElementById('period-btn-2');
-            
-            if (!periodText || !totalText || !value1 || !value2 || !percent1 || !percent2) {
-                return;
-            }
-            
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            
-            if (period === 1) {
-                if (period1Data) period1Data.style.display = 'block';
-                if (period2Data) period2Data.style.display = 'none';
-                periodText.textContent = '24/05-24/11';
-                totalText.textContent = currentLanguage === 'zh' ? '總計: 24個' : '合計: 24個';
-                value1.textContent = '6';
-                value2.textContent = '18';
-                percent1.textContent = '25.0%';
-                percent2.textContent = '75.0%';
-                if (periodBtn1) periodBtn1.classList.add('active');
-                if (periodBtn2) periodBtn2.classList.remove('active');
-            } else {
-                if (period1Data) period1Data.style.display = 'none';
-                if (period2Data) period2Data.style.display = 'block';
-                periodText.textContent = '24/12-25/05';
-                totalText.textContent = currentLanguage === 'zh' ? '總計: 34個' : '合計: 34個';
-                value1.textContent = '5';
-                value2.textContent = '29';
-                percent1.textContent = '14.7%';
-                percent2.textContent = '85.3%';
-                if (periodBtn1) periodBtn1.classList.remove('active');
-                if (periodBtn2) periodBtn2.classList.add('active');
-            }
-        }
+  <!-- DAY 6 -->
 
-        function switchLanguage(lang) {
-            currentLanguage = lang;
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.getElementById(`${lang}-btn`).classList.add('active');
-            
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    element.innerHTML = translations[lang][key];
-                }
-            });
-        }
+  <div class="day-card" data-day="6">
+    <div class="day-number">
+      <div class="day-dot"></div>
+      <div class="day-num-text">DAY 6</div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5 / 6　Tuesday</div>
+        <div class="day-title">補遺・返台</div>
+        <div class="day-subtitle">最後一站：高島屋難波・然後回家</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-time">08:00</div>
+          <div class="tl-body">
+            <div class="tl-place">退房・行李寄存</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">10:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">高島屋難波<span class="tl-tag tag-shop">購</span></div>
+            <div class="tl-note">開門衝地下食品街・伴手禮最終掃貨</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">11:15</div>
+          <div class="tl-body">
+            <div class="tl-place">難波出發</div>
+            <div class="tl-note">空港急行 → 關西空港・約40分</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">12:00</div>
+          <div class="tl-body">
+            <div class="tl-place">關西空港</div>
+            <div class="tl-note">辦理報到・行李托運</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">14:00</div>
+          <div class="tl-body">
+            <div class="tl-place highlight">CI0153 出發</div>
+            <div class="tl-note">中華航空　KIX → TPE</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-time">16:00</div>
+          <div class="tl-body">
+            <div class="tl-place">桃園機場抵達</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        // 自動輪播
-        setInterval(() => {
-            changeCarouselSlide(1);
-        }, 4000);
+</section>
 
-        // 鍵盤導航
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                nextSlide();
-            }
-            if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                prevSlide();
-            }
-        });
+<!-- TIPS -->
 
-        // 觸控支援
-        let startX = 0;
-        document.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-        });
+<section class="tips-section">
+  <div class="section-label" style="color: var(--gold);">關鍵提醒 Key Notes</div>
+  <div class="tips-grid">
+    <div class="tip-item">
+      <div class="tip-title">大塚美術館</div>
+      <div class="tip-text">黃金週一票難求，務必提前至官網預約門票，建議至少提早2週購買。</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-title">平等院鳳凰堂</div>
+      <div class="tip-text">09:00 開館即入場，黃金週人潮集中於上午後段，越早越好。</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-title">姬路城</div>
+      <div class="tip-text">天守閣內部排隊時間長，上午抵達為最佳選擇，下午人潮反流。</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-title">購物路線分工</div>
+      <div class="tip-text">大丸梅田→服飾雜貨｜大丸心齋橋→精品彩妝｜高島屋難波→食品伴手禮</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-title">交通票券</div>
+      <div class="tip-text">建議購入 ICOCA IC卡，全程通用，省去找零麻煩。視行程可評估是否搭配一日券。</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-title">5/6 返台節奏</div>
+      <div class="tip-text">CI0153 航班 14:00 出發，11:15 前必須離開難波，行李務必前一晚整理完畢。</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-title">本町基地優勢</div>
+      <div class="tip-text">中央線串連東西，至難波、心齋橋、梅田均在15分鐘內，交通效率極高。</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-title">大阪造幣局</div>
+      <div class="tip-text">黃金週期間通常需事先預約參觀，出發前請確認當年度開放資訊。</div>
+    </div>
+  </div>
+</section>
 
-        document.addEventListener('touchend', function(e) {
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-            
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
-                }
-            }
-        });
+<footer>
+  <div class="footer-text">大阪黃金週 2025 ・ 行程規劃稿</div>
+  <div class="footer-dates">5.1 — 5.6</div>
+</footer>
 
-        // 初始化
-        showSlide(0);
-        showCarouselSlide(0);
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
         setTimeout(() => {
-            togglePeriod(1);
-        }, 100);
-    </script>
+          entry.target.classList.add('visible');
+        }, 0);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.day-card').forEach(card => {
+    observer.observe(card);
+  });
+</script>
+
 </body>
 </html>
